@@ -87,7 +87,7 @@ public class SimpleLodeRunner extends JFrame {
         private String playerState = "idle";
         private boolean facingRight = true;
 
-        public int coin = 0;
+        public int money = 0;
         private int currentStage = 1;
         private static final int MAX_STAGES = 3;
 
@@ -274,7 +274,7 @@ public class SimpleLodeRunner extends JFrame {
                 coins.add(new Point(UNIT_SIZE * 5, PANEL_HEIGHT - 19 * UNIT_SIZE));
             }
 
-            else if (currentStage == 2) {
+            else if (currentStage == 3) {
 
                 player = new Point(UNIT_SIZE * 3, PANEL_HEIGHT - 3 * UNIT_SIZE);
 
@@ -535,7 +535,7 @@ public class SimpleLodeRunner extends JFrame {
                     timer.setDelay(10);
                 } else {
                     gameClear = true;
-                    coin = 10000;
+
                     timer.stop();
                 }
             }
@@ -546,6 +546,7 @@ public class SimpleLodeRunner extends JFrame {
         private void goToNextStage() {
 
             currentStage++;
+            money += 1000;
             resetGame();
             startGame();
         }
