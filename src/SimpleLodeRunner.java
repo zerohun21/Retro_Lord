@@ -151,7 +151,7 @@ public class SimpleLodeRunner extends JFrame {
 
             public void startGame() {
 
-            if (currentStage == 3) {
+            if (currentStage == 1) {
 
                 player = new Point(UNIT_SIZE * 4, PANEL_HEIGHT - 4 * UNIT_SIZE);
 
@@ -221,7 +221,7 @@ public class SimpleLodeRunner extends JFrame {
             }
 
 
-            else if (currentStage == 1) {
+            else if (currentStage == 2) {
 
                 player = new Point(UNIT_SIZE * 3, PANEL_HEIGHT - 3 * UNIT_SIZE);
 
@@ -230,7 +230,7 @@ public class SimpleLodeRunner extends JFrame {
                 enemyAIs.clear();
 
 
-                Point enemy1 = new Point(UNIT_SIZE * 8, PANEL_HEIGHT - 19 * UNIT_SIZE);
+                Point enemy1 = new Point(UNIT_SIZE * 18, PANEL_HEIGHT - 19 * UNIT_SIZE);
                 Point enemy2 = new Point(PANEL_WIDTH - 7 * UNIT_SIZE, PANEL_HEIGHT - 3 * UNIT_SIZE);
 
                 Point enemy3 = new Point(PANEL_WIDTH - 10 * UNIT_SIZE, PANEL_HEIGHT - 15 * UNIT_SIZE);
