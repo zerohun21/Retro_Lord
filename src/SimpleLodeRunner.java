@@ -230,10 +230,10 @@ public class SimpleLodeRunner extends JFrame {
                 enemyAIs.clear();
 
 
-                Point enemy1 = new Point(UNIT_SIZE * 10, PANEL_HEIGHT - 15 * UNIT_SIZE);
-                Point enemy2 = new Point(PANEL_WIDTH - 2 * UNIT_SIZE, PANEL_HEIGHT - 11 * UNIT_SIZE);
+                Point enemy1 = new Point(UNIT_SIZE * 8, PANEL_HEIGHT - 19 * UNIT_SIZE);
+                Point enemy2 = new Point(PANEL_WIDTH - 7 * UNIT_SIZE, PANEL_HEIGHT - 3 * UNIT_SIZE);
 
-                Point enemy3 = new Point(PANEL_WIDTH - 10 * UNIT_SIZE, PANEL_HEIGHT - 19 * UNIT_SIZE);
+                Point enemy3 = new Point(PANEL_WIDTH - 10 * UNIT_SIZE, PANEL_HEIGHT - 15 * UNIT_SIZE);
 
                 enemies.addAll(Arrays.asList(enemy1, enemy2, enemy3));
                 for (Point enemy : enemies) {
@@ -244,7 +244,7 @@ public class SimpleLodeRunner extends JFrame {
                 for (int i = 0; i < PANEL_WIDTH / UNIT_SIZE; i++) {
 
                     ground.add(new Point(i * UNIT_SIZE, PANEL_HEIGHT - 2 * UNIT_SIZE));
-                    if (i < 9 || i > PANEL_WIDTH / UNIT_SIZE - 6) {
+                    if (i < 15 || i > PANEL_WIDTH / UNIT_SIZE - 6) {
                         ground.add(new Point(i * UNIT_SIZE, PANEL_HEIGHT - 6 * UNIT_SIZE));
                     }
                     if (i > 4 && i < 18) {
@@ -256,8 +256,8 @@ public class SimpleLodeRunner extends JFrame {
 
 
                 for (int i = 0; i < 5; i++) {
-                    ladders.add(new Point(UNIT_SIZE * 2, PANEL_HEIGHT - 3 * UNIT_SIZE - i * UNIT_SIZE));
-
+                    ladders.add(new Point(UNIT_SIZE * 14, PANEL_HEIGHT - 3 * UNIT_SIZE - i * UNIT_SIZE));
+                    ladders.add(new Point(UNIT_SIZE * 3, PANEL_HEIGHT - 3 * UNIT_SIZE - i * UNIT_SIZE));
                     ladders.add(new Point(UNIT_SIZE * 8, PANEL_HEIGHT - 7 * UNIT_SIZE - i * UNIT_SIZE));
                     ladders.add(new Point(UNIT_SIZE * 5, PANEL_HEIGHT - 11 * UNIT_SIZE - i * UNIT_SIZE));
                     ladders.add(new Point(UNIT_SIZE * 15, PANEL_HEIGHT - 11 * UNIT_SIZE - i * UNIT_SIZE));
@@ -269,7 +269,7 @@ public class SimpleLodeRunner extends JFrame {
 
                 coins.add(new Point(UNIT_SIZE * 8, PANEL_HEIGHT - 3 * UNIT_SIZE));
                 coins.add(new Point(UNIT_SIZE * 7, PANEL_HEIGHT - 7 * UNIT_SIZE));
-                coins.add(new Point(UNIT_SIZE * 10, PANEL_HEIGHT - 11 * UNIT_SIZE));
+                coins.add(new Point(UNIT_SIZE * 20, PANEL_HEIGHT - 7 * UNIT_SIZE));
                 coins.add(new Point(UNIT_SIZE * 3, PANEL_HEIGHT - 15 * UNIT_SIZE));
                 coins.add(new Point(UNIT_SIZE * 5, PANEL_HEIGHT - 19 * UNIT_SIZE));
             }
