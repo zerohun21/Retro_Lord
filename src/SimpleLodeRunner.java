@@ -57,6 +57,11 @@ public class SimpleLodeRunner extends JFrame {
     }
     static class GamePanel extends JPanel implements ActionListener {
 
+        private JButton restartButton;
+        private JButton exitButton;
+        private JLabel scoreLabel;
+
+
         private List<Point> enemies; // 적의 위치를 저장하는 리스트
         private List<EnemyAI> enemyAIs;
         private boolean gameOver = false;
@@ -104,6 +109,10 @@ public class SimpleLodeRunner extends JFrame {
 
         public GamePanel() {
 
+            // Inside the GamePanel constructor
+            initializeGameOverComponents();
+
+
             enemies = new ArrayList<>();
             enemyAIs = new ArrayList<>();
             this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
@@ -146,10 +155,51 @@ public class SimpleLodeRunner extends JFrame {
 
             startGame();
         }
+        private void initializeGameOverComponents() {
+            // Initialize the components
+            restartButton = new JButton("Restart");
+            exitButton = new JButton("Exit");
+            scoreLabel = new JLabel();
+
+
+            setLayout(null);
+
+
+            scoreLabel.setBounds(350, 300, 200, 50);
+            scoreLabel.setForeground(Color.WHITE);
+            scoreLabel.setFont(new Font("Ink Free", Font.BOLD, 20));
+            add(scoreLabel);
+
+
+            restartButton.setBounds(300, 500, 100, 50);
+            add(restartButton);
+            restartButton.addActionListener(e -> restartGame());
+
+
+            exitButton.setBounds(450, 500, 100, 50);
+            add(exitButton);
+            exitButton.addActionListener(e -> System.exit(0));
+
+
+            restartButton.setVisible(false);
+            exitButton.setVisible(false);
+            scoreLabel.setVisible(false);
+        }
+
+        private void restartGame() {
+
+            resetGame();
+            startGame();
+
+
+            restartButton.setVisible(false);
+            exitButton.setVisible(false);
+            scoreLabel.setVisible(false);
+        }
 
 
 
-            public void startGame() {
+        public void startGame() {
 
             if (currentStage == 1) {
 
@@ -530,14 +580,37 @@ public class SimpleLodeRunner extends JFrame {
 
             if (collectedCoins >= TOTAL_COINS) {
                 if (currentStage < MAX_STAGES) {
+                    money += 1000;
                     gameState = GameState.TRANSITIONING;
                     transitionProgress = 0.0f;
                     timer.setDelay(10);
                 } else {
+
+                    money += 3000;
                     gameClear = true;
 
                     timer.stop();
                 }
+            }
+
+            if (gameOver) {
+                // Display the score
+                scoreLabel.setText("Score: " + money); // Update this based on your scoring system
+                scoreLabel.setVisible(true);
+
+                // Show the buttons
+                restartButton.setVisible(true);
+                exitButton.setVisible(true);
+            }
+
+            if (gameClear) {
+                // Display the score
+                scoreLabel.setText("Score: " + money); // Update this based on your scoring system
+                scoreLabel.setVisible(true);
+
+                // Show the buttons
+
+                exitButton.setVisible(true);
             }
         }
 
@@ -546,7 +619,7 @@ public class SimpleLodeRunner extends JFrame {
         private void goToNextStage() {
 
             currentStage++;
-            money += 1000;
+
             resetGame();
             startGame();
         }
